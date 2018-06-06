@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_news"
+        android:icon="@mipmap/ic_gamepad_variant"
+        android:title="Noticias" />
+
+    <item
+        android:id="@+id/nav_lol"
+        android:icon="@mipmap/ic_gamepad_variant"
+        android:title="League of leguends" />
+
+    <item
+        android:id="@+id/nav_dota"
+        android:icon="@mipmap/ic_gamepad_variant"
+        android:title="Dota" />
+
+    <item
+        android:id="@+id/nav_cssgo"
+        android:icon="@mipmap/ic_gamepad_variant"
+        android:title="counter strike" />
+
+    <item
+        android:id="@+id/nav_fav"
+        android:title="Favoritos" />
+
+</menu>
