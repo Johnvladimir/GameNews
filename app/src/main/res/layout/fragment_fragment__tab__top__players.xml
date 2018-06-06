@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layout_players"
     tools:context=".Fragmentos.Fragments_Add_Tabs.Fragment_Tab_Top_Players">
 
-    <TextView
-        android:gravity="center"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerPlayers"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Top Players" />
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

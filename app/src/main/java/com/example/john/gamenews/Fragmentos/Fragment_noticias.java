@@ -28,6 +28,7 @@ public class Fragment_noticias extends Fragment {
     public Fragment_noticias() {
     }
 
+    //esto es generado
     public static Fragment_noticias newInstance(String param1, String param2) {
         Fragment_noticias fragment = new Fragment_noticias();
         Bundle args = new Bundle();
@@ -38,18 +39,15 @@ public class Fragment_noticias extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         cargarNews();
-
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fragment_noticias, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerNews);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
 
         adapter = new AdapterRecycler(listaNews, getContext());
         recyclerView.setAdapter(adapter);
@@ -57,22 +55,25 @@ public class Fragment_noticias extends Fragment {
         return view;
     }
 
+    //metodo para llenar arreglo
     private void cargarNews() {
         listaNews = new ArrayList<>();
 
-        listaNews.add(new News(" ", "Descripcion1"," "," ", " ", "Descripcion2", " ",1));
-        listaNews.add(new News(" ", "Descripcion10"," "," ", " ", "Descripcion20", " ",1));
-        listaNews.add(new News(" ", "Descripcion100"," "," ", " ", "Descripcion200", " ",1));
-        listaNews.add(new News(" ", "Descripcion1000"," "," ", " ", "Descripcion2000", " ",1));
-        listaNews.add(new News(" ", "Descripcion10000"," "," ", " ", "Descripcion20000", " ",1));
+        listaNews.add(new News(" ", "Descripcion1", " ", " ", " ", "Descripcion2", " ", 1));
+        listaNews.add(new News(" ", "Descripcion10", " ", " ", " ", "Descripcion20", " ", 1));
+        listaNews.add(new News(" ", "Descripcion100", " ", " ", " ", "Descripcion200", " ", 1));
+        listaNews.add(new News(" ", "Descripcion1000", " ", " ", " ", "Descripcion2000", " ", 1));
+        listaNews.add(new News(" ", "Descripcion10000", " ", " ", " ", "Descripcion20000", " ", 1));
     }
 
+    //metodo generado
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
 
+    //metodo generado
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -84,12 +85,14 @@ public class Fragment_noticias extends Fragment {
         }
     }
 
+    //metodo generado
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
+    //metodo generado
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
