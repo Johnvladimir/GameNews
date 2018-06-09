@@ -29,9 +29,9 @@ public class Fragment_Tab_lol extends Fragment {
     private ViewPager viewPager;
     View view;
 
-    public Fragment_Tab_lol() {
-
+    public  Fragment_Tab_lol(){
     }
+
 
     // TODO: Rename and change types and number of parameters
     public static Fragment_Tab_lol newInstance(String param1, String param2) {
@@ -74,7 +74,7 @@ public class Fragment_Tab_lol extends Fragment {
 
             pestañas.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        }else{
+        } else {
             Utilidades_Tab.rotacion = 1;
         }
 

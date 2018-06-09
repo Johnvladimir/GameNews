@@ -20,9 +20,10 @@ import java.util.ArrayList;
 public class Fragment_Tab_Top_Players extends Fragment {
     private OnFragmentInteractionListener mListener;
 
-    ArrayList<Players> listPlayers;
-    RecyclerView recyclerView;
-    AdapterRecycler_Player adapter;
+    private ArrayList<Players> listPlayers;
+    private RecyclerView recyclerView;
+    private AdapterRecycler_Player adapter;
+
 
     public Fragment_Tab_Top_Players() {
     }
@@ -42,8 +43,7 @@ public class Fragment_Tab_Top_Players extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fragment__tab__top__players, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerPlayers);

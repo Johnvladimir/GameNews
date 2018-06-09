@@ -3,6 +3,7 @@ package com.example.john.gamenews.Adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.example.john.gamenews.Object.News;
 import com.example.john.gamenews.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyViewHolder> {
 
@@ -37,11 +39,13 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyView
         holder.textView.setText(listaNews.get(position).getTitle());
         holder.textView2.setText(listaNews.get(position).getDescription());
 
-      /*  if (position == 0 || position % 3 == 0) {
-            StaggeredGridLayoutManager.LayoutParams sglp = (StaggeredGridLayoutManager.LayoutParams) holder.itemView.getLayoutParams();
-            sglp.setFullSpan(true);
-            holder.itemView.setLayoutParams(sglp);
-        }*/
+        /*ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp = holder.itemView.getLayoutParams();
+            if (position % 3 == 0) {
+                StaggeredGridLayoutManager.LayoutParams sglp = new StaggeredGridLayoutManager.LayoutParams(lp);
+                sglp.setFullSpan(true);
+                holder.itemView.setLayoutParams(sglp);
+            }*/
     }
 
     @Override
@@ -49,14 +53,14 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyView
         return listaNews.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
 
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView1;
         TextView textView, textView2;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-
             imageView1 = itemView.findViewById(R.id.idImage1);
             textView = itemView.findViewById(R.id.idText1);
             textView2 = itemView.findViewById(R.id.idText2);

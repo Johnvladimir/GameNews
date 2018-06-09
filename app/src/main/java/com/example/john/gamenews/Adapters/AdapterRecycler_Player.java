@@ -17,8 +17,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdapterRecycler_Player extends RecyclerView.Adapter<AdapterRecycler_Player.MyViewHolder> {
 
-    ArrayList<Players> listPlayers;
-    Context context;
+     private ArrayList<Players> listPlayers;
+    private Context context;
 
     public AdapterRecycler_Player(ArrayList<Players> listPlayers, Context context) {
         this.listPlayers = listPlayers;
