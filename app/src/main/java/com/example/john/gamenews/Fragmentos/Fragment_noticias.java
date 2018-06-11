@@ -4,7 +4,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.john.gamenews.Adapters.AdapterRecycler;
-import com.example.john.gamenews.Helpers.RetrofitUser;
 import com.example.john.gamenews.Interface.GameNewsAPI;
 import com.example.john.gamenews.MainActivity;
 import com.example.john.gamenews.Object.News;
@@ -25,6 +23,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class Fragment_noticias extends Fragment {
@@ -32,11 +32,11 @@ public class Fragment_noticias extends Fragment {
 
     private static final String TAG = "NEWS";
 
-    ArrayList<News> listaNews;
-    RecyclerView recyclerView;
-    AdapterRecycler adapter;
-
-    private GameNewsAPI servicio;
+    private List<News> listaNews;
+    private List<News> aux = null;
+    private RecyclerView recyclerView;
+    private AdapterRecycler adapter;
+    View view;
 
     public Fragment_noticias() {
     }
@@ -53,40 +53,83 @@ public class Fragment_noticias extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_fragment_noticias, container, false);
+
+        LlenarNoticias(view);
+
+        return view;
+    }
+
     private void LlenarNoticias(final View view) {
         listaNews = new ArrayList<>();
 
-        servicio = RetrofitUser.getRetrofitInstance().create(GameNewsAPI.class);
+        String baseurl = "http://gamenewsuca.herokuapp.com/";
+        Retrofit retrofit = null;
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(baseurl)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
 
+        GameNewsAPI servicio = retrofit.create(GameNewsAPI.class);
         Call<List<News>> autentic = servicio.signNews("Bearer " + MainActivity.loginUsuario.getToken());
-        autentic.enqueue(new Callback<List<News>>() {
 
+        autentic.enqueue(new Callback<List<News>>() {
             @Override
             public void onResponse(Call<List<News>> call, Response<List<News>> response) {
 
-                if (response.isSuccessful()) {
+                aux = response.body();
 
-                    List<News> noticias = response.body();
+                String titulo, cuerpo, juego, coverImage, descripcion, create_date;
 
-                    for (int i = 0; i < noticias.size(); i++) {
-                        News n = noticias.get(i);
-                        Log.d(TAG, "Noticia" + n.getTitle());
+                for (int i = 0; i < aux.size(); i++) {
+
+                    if (aux.get(i).getTitle() == null) {
+                        titulo = "No hay titulo";
+                    } else {
+                        titulo = aux.get(i).getTitle();
                     }
 
-                     /*   for (News nuevo : noticias) {
-                            listaNews.add(nuevo);
-                        }
-                    */
+                    if (aux.get(i).getBody() == null) {
+                        cuerpo = "No hay titulo";
+                    } else {
+                        cuerpo = aux.get(i).getBody();
+                    }
 
-                    recyclerView = view.findViewById(R.id.recyclerNews);
-                    adapter = new AdapterRecycler(listaNews, getContext());
-                    recyclerView.setAdapter(adapter);
-                    recyclerView.setHasFixedSize(true);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    if (aux.get(i).getGame() == null) {
+                        juego = "No hay titulo";
+                    } else {
+                        juego = aux.get(i).getGame();
+                    }
 
-                } else {
-                    Log.d(TAG, "onResponse: " + response.errorBody());
+                    if (aux.get(i).getCoverImage() == null) {
+                        coverImage = "No hay titulo";
+                    } else {
+                        coverImage = aux.get(i).getCoverImage();
+                    }
+
+                    if (aux.get(i).getDescription() == null) {
+                        descripcion = "No hay titulo";
+                    } else {
+                        descripcion = aux.get(i).getDescription();
+                    }
+
+                    if (aux.get(i).getCreatedDate() == null) {
+                        create_date = "No hay titulo";
+                    } else {
+                        create_date = aux.get(i).getCreatedDate();
+                    }
+
+                    listaNews.add(new News(aux.get(i).get_id(), titulo, cuerpo, juego, coverImage, descripcion, create_date, aux.get(i).get__v()));
                 }
+
+                recyclerView = view.findViewById(R.id.recyclerNews);
+                adapter = new AdapterRecycler(listaNews, getContext());
+                recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+                recyclerView.setAdapter(adapter);
             }
 
             @Override
@@ -94,16 +137,6 @@ public class Fragment_noticias extends Fragment {
                 Log.d(TAG, "onFailure" + t.getMessage());
             }
         });
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fragment_noticias, container, false);
-
-        LlenarNoticias(view);
-
-        return view;
     }
 
     public void onButtonPressed(Uri uri) {
@@ -128,6 +161,7 @@ public class Fragment_noticias extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);

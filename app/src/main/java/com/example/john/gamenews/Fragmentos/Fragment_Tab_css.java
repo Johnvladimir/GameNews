@@ -74,10 +74,9 @@ public class Fragment_Tab_css extends Fragment {
 
             pestañas.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        }else{
+        } else {
             Utilidades_Tab.rotacion = 1;
         }
-
 
         return view;
     }

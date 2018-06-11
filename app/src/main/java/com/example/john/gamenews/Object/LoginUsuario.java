@@ -9,7 +9,8 @@ public class LoginUsuario {
     @Expose
     private String token;
 
-    public LoginUsuario() {
+    public LoginUsuario(String token) {
+        this.token = token;
     }
 
     public String getToken() {

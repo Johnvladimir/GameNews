@@ -12,16 +12,16 @@ import android.widget.TextView;
 
 import com.example.john.gamenews.Object.News;
 import com.example.john.gamenews.R;
+import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyViewHolder> {
 
-    ArrayList<News> listaNews;
+    List<News> listaNews;
     Context ctx;
 
-    public AdapterRecycler(ArrayList<News> listaNews, Context ctx) {
+    public AdapterRecycler(List<News> listaNews, Context ctx) {
         this.listaNews = listaNews;
         this.ctx = ctx;
     }
@@ -35,14 +35,15 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterRecycler.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.textView.setText(listaNews.get(position).getTitle());
-        holder.textView2.setText(listaNews.get(position).getDescription());
+        holder.textView2.setText(listaNews.get(position).getGame());
 
-        /*ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        lp = holder.itemView.getLayoutParams();
+        Picasso.with(ctx).load(listaNews.get(position).getCoverImage()).fit().into(holder.imageView1);
+
+       /* final ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
             if (position % 3 == 0) {
-                StaggeredGridLayoutManager.LayoutParams sglp = new StaggeredGridLayoutManager.LayoutParams(lp);
+                StaggeredGridLayoutManager.LayoutParams sglp = (StaggeredGridLayoutManager.LayoutParams) lp;
                 sglp.setFullSpan(true);
                 holder.itemView.setLayoutParams(sglp);
             }*/
@@ -52,8 +53,6 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyView
     public int getItemCount() {
         return listaNews.size();
     }
-
-
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView1;

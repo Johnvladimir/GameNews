@@ -10,17 +10,18 @@ import android.widget.TextView;
 
 import com.example.john.gamenews.Object.Players;
 import com.example.john.gamenews.R;
+import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdapterRecycler_Player extends RecyclerView.Adapter<AdapterRecycler_Player.MyViewHolder> {
 
-     private ArrayList<Players> listPlayers;
-    private Context context;
+    List<Players> listPlayers;
+    Context context;
 
-    public AdapterRecycler_Player(ArrayList<Players> listPlayers, Context context) {
+    public AdapterRecycler_Player(List<Players> listPlayers, Context context) {
         this.listPlayers = listPlayers;
         this.context = context;
     }
@@ -36,7 +37,9 @@ public class AdapterRecycler_Player extends RecyclerView.Adapter<AdapterRecycler
     @Override
     public void onBindViewHolder(@NonNull AdapterRecycler_Player.MyViewHolder holder, int position) {
         holder.textViewPlayer1.setText(listPlayers.get(position).getName());
-        holder.textViewPlayer2.setText(listPlayers.get(position).getBiografia());
+        holder.textViewPlayer2.setText(listPlayers.get(position).getGame());
+
+        Picasso.with(context).load(listPlayers.get(position).getAvatar()).fit().into(holder.circleImageView);
     }
 
     @Override

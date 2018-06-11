@@ -2,6 +2,7 @@ package com.example.john.gamenews.Interface;
 
 import com.example.john.gamenews.Object.LoginUsuario;
 import com.example.john.gamenews.Object.News;
+import com.example.john.gamenews.Object.Players;
 
 import java.util.List;
 
@@ -19,5 +20,8 @@ public interface GameNewsAPI {
     Call<LoginUsuario> sign(@Field("user") String username, @Field("password") String password);
 
     @GET("news")
-    Call<List<News>> signNews(@Header("autorizacion") String autorizacion);
+    Call<List<News>> signNews(@Header("Authorization") String token);
+
+    @GET("players")
+    Call<List<Players>> signPlayers(@Header("Authorization") String token);
 }
