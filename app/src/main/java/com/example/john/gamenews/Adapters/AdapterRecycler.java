@@ -3,7 +3,6 @@ package com.example.john.gamenews.Adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,12 +40,7 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyView
 
         Picasso.with(ctx).load(listaNews.get(position).getCoverImage()).fit().into(holder.imageView1);
 
-       /* final ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
-            if (position % 3 == 0) {
-                StaggeredGridLayoutManager.LayoutParams sglp = (StaggeredGridLayoutManager.LayoutParams) lp;
-                sglp.setFullSpan(true);
-                holder.itemView.setLayoutParams(sglp);
-            }*/
+
     }
 
     @Override

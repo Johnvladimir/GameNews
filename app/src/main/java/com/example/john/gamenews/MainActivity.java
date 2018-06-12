@@ -45,12 +45,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<LoginUsuario> call, Response<LoginUsuario> response) {
                         if (response.isSuccessful()) {
-                            Log.d(TAG,"onResponse isSuccessful");
+                            Log.d(TAG, "onResponse isSuccessful");
                             loginUsuario = response.body();
 
                             if (loginUsuario.getToken() != null) {
                                 Intent intent = new Intent(MainActivity.this, NavDraw.class);
                                 startActivity(intent);
+                                finish();
                             }
                         } else {
                             Log.d(TAG, "onResponse: " + response.errorBody());

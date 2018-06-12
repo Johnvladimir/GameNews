@@ -1,5 +1,6 @@
 package com.example.john.gamenews.Fragmentos;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
@@ -32,8 +33,6 @@ public class Fragment_Tab_lol extends Fragment {
     public  Fragment_Tab_lol(){
     }
 
-
-    // TODO: Rename and change types and number of parameters
     public static Fragment_Tab_lol newInstance(String param1, String param2) {
         Fragment_Tab_lol fragment = new Fragment_Tab_lol();
         Bundle args = new Bundle();

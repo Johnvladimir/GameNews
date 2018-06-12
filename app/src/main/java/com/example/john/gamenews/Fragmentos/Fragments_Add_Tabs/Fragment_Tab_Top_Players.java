@@ -26,7 +26,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
 public class Fragment_Tab_Top_Players extends Fragment {
     private OnFragmentInteractionListener mListener;
 
@@ -52,6 +51,7 @@ public class Fragment_Tab_Top_Players extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override

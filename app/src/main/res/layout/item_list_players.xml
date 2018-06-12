@@ -2,18 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#5D1049"
     android:orientation="horizontal"
-    android:padding="20dp">
+    android:padding="15dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/idImagePlayer"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_gravity="center"
         android:src="@drawable/hello_world_doc_version1" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:backgroundTint="#720D5D"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/rectangle"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -22,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre Player"
+            android:textColor="#fff"
             android:textSize="15dp" />
 
         <TextView
@@ -30,8 +36,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Subtitulo"
+            android:textColor="#fff"
             android:textSize="15dp" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="35dp"
+            android:background="@android:color/black" />
     </LinearLayout>
 
 </LinearLayout>

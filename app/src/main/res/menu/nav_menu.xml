@@ -14,7 +14,7 @@
     <item
         android:id="@+id/nav_dota"
         android:icon="@mipmap/ic_gamepad_variant"
-        android:title="Dota" />
+        android:title="Overwtach" />
 
     <item
         android:id="@+id/nav_cssgo"
@@ -23,6 +23,11 @@
 
     <item
         android:id="@+id/nav_fav"
+        android:icon="@drawable/ic_favorite_black_24dp"
         android:title="Favoritos" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Logout"/>
 
 </menu>

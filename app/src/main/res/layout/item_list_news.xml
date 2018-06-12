@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#5D1049"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp">
@@ -9,26 +10,38 @@
     <ImageView
         android:id="@+id/idImage1"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_height="170dp"
+        android:layout_gravity="center"
         android:src="@drawable/hello_world_doc_version1" />
 
-    <TextView
-        android:id="@+id/idText1"
+    <LinearLayout
+        android:backgroundTint="#720D5D"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Texto"
-        android:textAlignment="center"
-        android:textSize="15sp" />
+        android:background="@drawable/rectangle"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/idText2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Texto"
-        android:textAlignment="center"
-        android:textSize="15sp" />
+        <TextView
+            android:id="@+id/idText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Texto"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/idText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Texto"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+    </LinearLayout>
 
 </LinearLayout>
