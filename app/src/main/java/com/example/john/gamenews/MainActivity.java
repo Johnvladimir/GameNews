@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<LoginUsuario> call, Response<LoginUsuario> response) {
                         if (response.isSuccessful()) {
-                            Log.d(TAG, "onResponse isSuccessful");
                             loginUsuario = response.body();
 
                             if (loginUsuario.getToken() != null) {
@@ -56,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             Log.d(TAG, "onResponse: " + response.errorBody());
                         }
-
                     }
 
                     @Override

@@ -94,13 +94,13 @@ public class NavDraw extends AppCompatActivity implements NavigationView.OnNavig
             miFragment = new Fragment_noticias();
             fragmentseleccionado = true;
         } else if (id == R.id.nav_lol) {
-            miFragment = new Fragment_Tab_lol();
+            miFragment = new Fragment_Tab_lol().newInstance("lol");
             fragmentseleccionado = true;
         } else if (id == R.id.nav_dota) {
-            miFragment = new Fragment_Tab_dota();
+            miFragment = new Fragment_Tab_dota().newInstance("overwatch");
             fragmentseleccionado = true;
         } else if (id == R.id.nav_cssgo) {
-            miFragment = new Fragment_Tab_css();
+            miFragment = new Fragment_Tab_css().newInstance("csgo");
             fragmentseleccionado = true;
         } else if (id == R.id.nav_logout) {
             miFragment = new Fragment_LogOut();

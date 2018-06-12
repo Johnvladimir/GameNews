@@ -1,6 +1,5 @@
 package com.example.john.gamenews.Fragmentos;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
@@ -30,12 +29,15 @@ public class Fragment_Tab_lol extends Fragment {
     private ViewPager viewPager;
     View view;
 
-    public  Fragment_Tab_lol(){
+    private static String dato;
+
+    public Fragment_Tab_lol() {
     }
 
-    public static Fragment_Tab_lol newInstance(String param1, String param2) {
+    public static Fragment_Tab_lol newInstance(String param1) {
         Fragment_Tab_lol fragment = new Fragment_Tab_lol();
-        Bundle args = new Bundle();
+
+        dato = param1;
 
         return fragment;
     }
@@ -84,7 +86,7 @@ public class Fragment_Tab_lol extends Fragment {
         AdapterTabLayout adapter = new AdapterTabLayout(getFragmentManager());
 
         adapter.addFragment(new Fragment_Tab_General(), "General");
-        adapter.addFragment(new Fragment_Tab_Top_Players(), "Top Players");
+        adapter.addFragment(new Fragment_Tab_Top_Players().newInstance(dato), "Top Players");
         adapter.addFragment(new Fragment_Tab_Image(), "Images");
 
         viewPager.setAdapter(adapter);

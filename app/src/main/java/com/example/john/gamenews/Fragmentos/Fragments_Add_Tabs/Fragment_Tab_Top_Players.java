@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.john.gamenews.Adapters.AdapterRecycler_Player;
+import com.example.john.gamenews.Fragmentos.Fragment_Tab_lol;
 import com.example.john.gamenews.Interface.GameNewsAPI;
 import com.example.john.gamenews.MainActivity;
 import com.example.john.gamenews.Object.Players;
@@ -36,14 +38,16 @@ public class Fragment_Tab_Top_Players extends Fragment {
     private RecyclerView recyclerView;
     private AdapterRecycler_Player adapter;
     View view;
+    private static String dato;
 
     public Fragment_Tab_Top_Players() {
     }
 
     //metodo generado
-    public static Fragment_Tab_Top_Players newInstance(String param1, String param2) {
+    public static Fragment_Tab_Top_Players newInstance(String param1) {
         Fragment_Tab_Top_Players fragment = new Fragment_Tab_Top_Players();
-        Bundle args = new Bundle();
+
+        dato = param1;
 
         return fragment;
     }
@@ -57,6 +61,8 @@ public class Fragment_Tab_Top_Players extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_fragment__tab__top__players, container, false);
+
+        Toast.makeText(getContext(), "el valor que trae el bundle es: " + dato, Toast.LENGTH_SHORT);
 
         llenarPlayers(view);
 
@@ -88,7 +94,7 @@ public class Fragment_Tab_Top_Players extends Fragment {
 
                 for (int j = 0; j < aux.size(); j++) {
 
-                    if (aux.get(j).getGame().equals("lol")) {
+                    if (aux.get(j).getGame().equals(dato) && aux.get(j).getAvatar() != null) {
 
                         if (aux.get(j).getAvatar() == null) {
                             avatar = "No existe";
@@ -121,6 +127,7 @@ public class Fragment_Tab_Top_Players extends Fragment {
                         }
 
                         listPlayers.add(new Players(avatar, id, name, biografia, game, aux.get(j).get__v()));
+
                     }
                 }
 

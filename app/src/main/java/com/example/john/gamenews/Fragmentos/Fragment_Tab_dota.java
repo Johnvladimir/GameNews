@@ -28,15 +28,16 @@ public class Fragment_Tab_dota extends Fragment {
     private TabLayout pestañas;
     private ViewPager viewPager;
     View view;
+    private  static String dato;
 
     public Fragment_Tab_dota() {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
-    public static Fragment_Tab_dota newInstance(String param1, String param2) {
+    public static Fragment_Tab_dota newInstance(String param1) {
         Fragment_Tab_dota fragment = new Fragment_Tab_dota();
-        Bundle args = new Bundle();
+
+        dato = param1;
 
         return fragment;
     }
@@ -87,7 +88,7 @@ public class Fragment_Tab_dota extends Fragment {
         AdapterTabLayout adapter = new AdapterTabLayout(getFragmentManager());
 
         adapter.addFragment(new Fragment_Tab_General(), "General");
-        adapter.addFragment(new Fragment_Tab_Top_Players(), "Top Players");
+        adapter.addFragment(new Fragment_Tab_Top_Players().newInstance(dato), "Top Players");
         adapter.addFragment(new Fragment_Tab_Image(), "Images");
 
         viewPager.setAdapter(adapter);
