@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/buscador"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Buscador"
+        app:actionViewClass="android:support.v7.widget.SearchView"
+        app:showAsAction="always|collapseActionView" />
 
     <item
         android:id="@+id/nav_news"
@@ -14,7 +22,7 @@
     <item
         android:id="@+id/nav_dota"
         android:icon="@mipmap/ic_gamepad_variant"
-        android:title="Overwtach" />
+        android:title="Overwatch" />
 
     <item
         android:id="@+id/nav_cssgo"
@@ -28,6 +36,7 @@
 
     <item
         android:id="@+id/nav_logout"
-        android:title="Logout"/>
+        android:icon="@drawable/ic_arrow_back_black_24dp"
+        android:title="Cerrar Sesión" />
 
 </menu>

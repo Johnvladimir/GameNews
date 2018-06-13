@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#5D1049"
     tools:context=".Fragmentos.Fragments_Add_Tabs.Fragment_Tab_Image">
 
-    <TextView
-        android:gravity="center"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerImages"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Imagenes" />
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

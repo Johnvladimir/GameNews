@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.example.john.gamenews.Helpers.RetrofitUser;
 import com.example.john.gamenews.Interface.GameNewsAPI;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private GameNewsAPI servicio;
     public static LoginUsuario loginUsuario;
     private static final String TAG = "USER";
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +41,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                findViewById(R.id.ProgressBar).setVisibility(View.VISIBLE);
                 Call<LoginUsuario> autenticar = servicio.sign(usuario.getText().toString(), contraseña.getText().toString());
                 autenticar.enqueue(new Callback<LoginUsuario>() {
 
                     @Override
                     public void onResponse(Call<LoginUsuario> call, Response<LoginUsuario> response) {
                         if (response.isSuccessful()) {
+
                             loginUsuario = response.body();
 
                             if (loginUsuario.getToken() != null) {
+                                findViewById(R.id.ProgressBar).setVisibility(View.GONE);
                                 Intent intent = new Intent(MainActivity.this, NavDraw.class);
                                 startActivity(intent);
                                 finish();

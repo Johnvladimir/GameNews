@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.john.gamenews.MainActivity;
-import com.example.john.gamenews.NavDraw;
 import com.example.john.gamenews.R;
 
 public class Fragment_LogOut extends Fragment {

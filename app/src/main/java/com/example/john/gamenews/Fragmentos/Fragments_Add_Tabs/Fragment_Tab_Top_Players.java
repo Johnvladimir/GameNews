@@ -10,10 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.john.gamenews.Adapters.AdapterRecycler_Player;
-import com.example.john.gamenews.Fragmentos.Fragment_Tab_lol;
 import com.example.john.gamenews.Interface.GameNewsAPI;
 import com.example.john.gamenews.MainActivity;
 import com.example.john.gamenews.Object.Players;
@@ -61,8 +59,6 @@ public class Fragment_Tab_Top_Players extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_fragment__tab__top__players, container, false);
-
-        Toast.makeText(getContext(), "el valor que trae el bundle es: " + dato, Toast.LENGTH_SHORT);
 
         llenarPlayers(view);
 

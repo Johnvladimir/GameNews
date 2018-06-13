@@ -87,9 +87,9 @@ public class Fragment_Tab_dota extends Fragment {
     private void llenarViewPager(ViewPager viewPager){
         AdapterTabLayout adapter = new AdapterTabLayout(getFragmentManager());
 
-        adapter.addFragment(new Fragment_Tab_General(), "General");
+        adapter.addFragment(new Fragment_Tab_General().newInstance(dato), "General");
         adapter.addFragment(new Fragment_Tab_Top_Players().newInstance(dato), "Top Players");
-        adapter.addFragment(new Fragment_Tab_Image(), "Images");
+        adapter.addFragment(new Fragment_Tab_Image().newInstance(dato), "Images");
 
         viewPager.setAdapter(adapter);
     }

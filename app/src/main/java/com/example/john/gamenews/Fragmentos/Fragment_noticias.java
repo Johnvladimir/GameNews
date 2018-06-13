@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,7 +90,6 @@ public class Fragment_noticias extends Fragment {
 
                     if (aux.get(i).getCoverImage() != null) {
 
-
                         if (aux.get(i).getTitle() == null) {
                             titulo = "No hay titulo";
                         } else {
@@ -134,7 +132,6 @@ public class Fragment_noticias extends Fragment {
 
                 recyclerView = view.findViewById(R.id.recyclerNews);
                 adapter = new AdapterRecycler(listaNews, getContext());
-                //recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                 gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                     @Override
@@ -182,6 +179,7 @@ public class Fragment_noticias extends Fragment {
 
 
     public interface OnFragmentInteractionListener {
+
         void onFragmentInteraction(Uri uri);
     }
 }

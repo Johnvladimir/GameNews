@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/layout_players"
+    android:background="#5D1049"
     tools:context=".Fragmentos.Fragments_Add_Tabs.Fragment_Tab_Top_Players">
 
     <android.support.v7.widget.RecyclerView
