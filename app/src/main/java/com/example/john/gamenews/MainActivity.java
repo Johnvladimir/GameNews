@@ -1,14 +1,15 @@
 package com.example.john.gamenews;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.john.gamenews.Helpers.RetrofitUser;
 import com.example.john.gamenews.Interface.GameNewsAPI;
@@ -21,7 +22,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     TextInputEditText usuario, contraseña;
-    //EditText usuario, contraseña;
     Button boton;
     private GameNewsAPI servicio;
     public static LoginUsuario loginUsuario;
@@ -32,11 +32,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        usuario = findViewById(R.id.usuario);
-        contraseña = findViewById(R.id.contraseña);
-        boton = findViewById(R.id.boton);
-
+        this.usuario = findViewById(R.id.usuario);
+        this.contraseña = findViewById(R.id.contraseña);
+        this.boton = findViewById(R.id.boton);
         this.servicio = RetrofitUser.getRetrofitInstance().create(GameNewsAPI.class);
+    }
+
+    protected void onResume() {
+        super.onResume();
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,18 +51,22 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call<LoginUsuario> call, Response<LoginUsuario> response) {
-                        if (response.isSuccessful()) {
 
-                            loginUsuario = response.body();
+                        loginUsuario = response.body();
+                        if (response.code() != 401) {
+                            Intent intent = new Intent(MainActivity.this, NavDraw.class);
+                            findViewById(R.id.ProgressBar).setVisibility(View.GONE);
+                            startActivity(intent);
+                            finish();
 
-                            if (loginUsuario.getToken() != null) {
-                                Intent intent = new Intent(MainActivity.this, NavDraw.class);
-                                findViewById(R.id.ProgressBar).setVisibility(View.GONE);
-                                startActivity(intent);
-                                finish();
-                            }
                         } else {
-                            Log.d(TAG, "onResponse: " + response.errorBody());
+                            findViewById(R.id.ProgressBar).setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(), "Datos Incorrectos", Toast.LENGTH_SHORT).show();
+                            EditText usuario, contraseña;
+                            usuario = findViewById(R.id.usuario);
+                            contraseña = findViewById(R.id.contraseña);
+                            usuario.setText("");
+                            contraseña.setText("");
                         }
                     }
 
