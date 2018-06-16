@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.john.gamenews.Clases.Utilidades_Tab;
+import com.example.john.gamenews.Fragmentos.Fragment_Favoritos;
 import com.example.john.gamenews.Fragmentos.Fragment_LogOut;
 import com.example.john.gamenews.Fragmentos.Fragment_Tab_css;
 import com.example.john.gamenews.Fragmentos.Fragment_Tab_dota;
@@ -30,7 +31,8 @@ public class NavDraw extends AppCompatActivity implements NavigationView.OnNavig
         Fragment_Tab_General.OnFragmentInteractionListener,
         Fragment_Tab_Image.OnFragmentInteractionListener,
         Fragment_Tab_Top_Players.OnFragmentInteractionListener,
-        Fragment_LogOut.OnFragmentInteractionListener {
+        Fragment_LogOut.OnFragmentInteractionListener,
+        Fragment_Favoritos.OnFragmentInteractionListener {
 
     android.support.v4.app.Fragment miFragment;
 
@@ -55,7 +57,6 @@ public class NavDraw extends AppCompatActivity implements NavigationView.OnNavig
         if (Utilidades_Tab.validarPantalla == true) {
             Fragment fragment = new Fragment_noticias();
             getSupportFragmentManager().beginTransaction().replace(R.id.contenido, fragment).commit();
-            Utilidades_Tab.validarPantalla = false;
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -108,6 +109,9 @@ public class NavDraw extends AppCompatActivity implements NavigationView.OnNavig
             Intent intent = new Intent(NavDraw.this, MainActivity.class);
             startActivity(intent);
             finish();
+        } else if (id == R.id.nav_fav) {
+            miFragment = new Fragment_Favoritos();
+            fragmentseleccionado = true;
         }
 
         if (fragmentseleccionado) {
@@ -119,6 +123,7 @@ public class NavDraw extends AppCompatActivity implements NavigationView.OnNavig
 
         return true;
     }
+
 
     @Override
     public void onFragmentInteraction(Uri uri) {

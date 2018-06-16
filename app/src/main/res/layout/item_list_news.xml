@@ -5,7 +5,8 @@
     android:background="#5D1049"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:id="@+id/item_list_news">
 
     <ImageView
         android:id="@+id/idImage1"
@@ -15,11 +16,11 @@
         android:src="@drawable/hello_world_doc_version1" />
 
     <LinearLayout
-        android:backgroundTint="#720D5D"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@drawable/rectangle"
+        android:backgroundTint="#720D5D"
         android:orientation="vertical">
 
         <TextView
@@ -41,6 +42,13 @@
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="15sp" />
+
+        <CheckBox
+            android:id="@+id/idCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:button="@drawable/btn_checkbox" />
 
     </LinearLayout>
 

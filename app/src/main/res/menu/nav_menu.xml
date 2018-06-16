@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item
-        android:id="@+id/buscador"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:title="Buscador"
-        app:actionViewClass="android:support.v7.widget.SearchView"
-        app:showAsAction="always|collapseActionView" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/nav_news"
@@ -27,7 +19,7 @@
     <item
         android:id="@+id/nav_cssgo"
         android:icon="@mipmap/ic_gamepad_variant"
-        android:title="counter strike" />
+        android:title="Counter Strike" />
 
     <item
         android:id="@+id/nav_fav"

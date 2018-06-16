@@ -1,13 +1,14 @@
 package com.example.john.gamenews;
 
 import android.content.Intent;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 
 import com.example.john.gamenews.Helpers.RetrofitUser;
 import com.example.john.gamenews.Interface.GameNewsAPI;
@@ -19,12 +20,12 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText usuario, contraseña;
+    TextInputEditText usuario, contraseña;
+    //EditText usuario, contraseña;
     Button boton;
     private GameNewsAPI servicio;
     public static LoginUsuario loginUsuario;
     private static final String TAG = "USER";
-    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
                             loginUsuario = response.body();
 
                             if (loginUsuario.getToken() != null) {
-                                findViewById(R.id.ProgressBar).setVisibility(View.GONE);
                                 Intent intent = new Intent(MainActivity.this, NavDraw.class);
+                                findViewById(R.id.ProgressBar).setVisibility(View.GONE);
                                 startActivity(intent);
                                 finish();
                             }

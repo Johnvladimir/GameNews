@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.example.john.gamenews.Adapters.AdapterRecycler;
 import com.example.john.gamenews.Interface.GameNewsAPI;
@@ -36,6 +38,7 @@ public class Fragment_noticias extends Fragment {
     private List<News> aux = null;
     private RecyclerView recyclerView;
     private AdapterRecycler adapter;
+    private CheckBox checkBox;
     View view;
 
     public Fragment_noticias() {
@@ -51,11 +54,14 @@ public class Fragment_noticias extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_fragment_noticias, container, false);
+        checkBox = view.findViewById(R.id.idCheckBox);
+
 
         LlenarNoticias(view);
 
@@ -83,8 +89,7 @@ public class Fragment_noticias extends Fragment {
 
                 aux = response.body();
 
-
-                String titulo, cuerpo, juego, coverImage, descripcion, create_date;
+                String titulo, cuerpo, juego, coverImage, descripcion;
 
                 for (int i = 0; i < aux.size(); i++) {
 
@@ -97,36 +102,30 @@ public class Fragment_noticias extends Fragment {
                         }
 
                         if (aux.get(i).getBody() == null) {
-                            cuerpo = "No hay titulo";
+                            cuerpo = "No hay body";
                         } else {
                             cuerpo = aux.get(i).getBody();
                         }
 
                         if (aux.get(i).getGame() == null) {
-                            juego = "No hay titulo";
+                            juego = "No hay juego";
                         } else {
                             juego = aux.get(i).getGame();
                         }
 
                         if (aux.get(i).getCoverImage() == null) {
-                            coverImage = "No hay titulo";
+                            coverImage = "No hay imagen";
                         } else {
                             coverImage = aux.get(i).getCoverImage();
                         }
 
                         if (aux.get(i).getDescription() == null) {
-                            descripcion = "No hay titulo";
+                            descripcion = "No hay descripcion";
                         } else {
                             descripcion = aux.get(i).getDescription();
                         }
 
-                        if (aux.get(i).getCreatedDate() == null) {
-                            create_date = "No hay titulo";
-                        } else {
-                            create_date = aux.get(i).getCreatedDate();
-                        }
-
-                        listaNews.add(new News(aux.get(i).get_id(), titulo, cuerpo, juego, coverImage, descripcion, create_date, aux.get(i).get__v()));
+                        listaNews.add(new News(aux.get(i).get_id(), titulo, cuerpo, juego, coverImage, descripcion, aux.get(i).getCreatedDate(), aux.get(i).get__v()));
                     }
                 }
 
@@ -145,6 +144,7 @@ public class Fragment_noticias extends Fragment {
                 });
                 recyclerView.setLayoutManager(gridLayoutManager);
                 recyclerView.setAdapter(adapter);
+
             }
 
             @Override

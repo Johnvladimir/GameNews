@@ -86,7 +86,7 @@ public class Fragment_Tab_General extends Fragment {
             public void onResponse(Call<List<News>> call, Response<List<News>> response) {
                 aux = response.body();
 
-                String titulo, cuerpo, juego, coverImage, descripcion, create_date;
+                String titulo, cuerpo, juego, coverImage, descripcion;
 
                 for (int i = 0; i < aux.size(); i++) {
 
@@ -99,19 +99,19 @@ public class Fragment_Tab_General extends Fragment {
                         }
 
                         if (aux.get(i).getBody() == null) {
-                            cuerpo = "No hay titulo";
+                            cuerpo = "No hay cuerpo";
                         } else {
                             cuerpo = aux.get(i).getBody();
                         }
 
                         if (aux.get(i).getGame() == null) {
-                            juego = "No hay titulo";
+                            juego = "No hay juego";
                         } else {
                             juego = aux.get(i).getGame();
                         }
 
                         if (aux.get(i).getCoverImage() == null) {
-                            coverImage = "No hay titulo";
+                            coverImage = "No hay imagen";
                         } else {
                             coverImage = aux.get(i).getCoverImage();
                         }
@@ -122,29 +122,14 @@ public class Fragment_Tab_General extends Fragment {
                             descripcion = aux.get(i).getDescription();
                         }
 
-                        if (aux.get(i).getCreatedDate() == null) {
-                            create_date = "No hay titulo";
-                        } else {
-                            create_date = aux.get(i).getCreatedDate();
-                        }
-
-                        listGeneral.add(new News(aux.get(i).get_id(), titulo, cuerpo, juego, coverImage, descripcion, create_date, aux.get(i).get__v()));
+                        listGeneral.add(new News(aux.get(i).get_id(), titulo, cuerpo, juego, coverImage, descripcion, aux.get(i).getCreatedDate(), aux.get(i).get__v()));
                     }
                 }
 
                 recyclerView = view.findViewById(R.id.recyclerGeneral);
                 adapter = new AdapterRecycler(listGeneral, getContext());
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-                gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                    @Override
-                    public int getSpanSize(int position) {
-                        if (position % 3 == 0) {
-                            return 2;
-                        } else {
-                            return 1;
-                        }
-                    }
-                });
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
+
 
                 recyclerView.setLayoutManager(gridLayoutManager);
                 recyclerView.setAdapter(adapter);
