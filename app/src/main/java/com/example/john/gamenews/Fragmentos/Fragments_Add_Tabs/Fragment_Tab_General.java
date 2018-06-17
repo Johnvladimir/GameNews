@@ -11,11 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.john.gamenews.Adapters.AdapterRecycler;
-import com.example.john.gamenews.Adapters.AdapterRecycler_Player;
 import com.example.john.gamenews.Interface.GameNewsAPI;
 import com.example.john.gamenews.MainActivity;
 import com.example.john.gamenews.Object.News;
-import com.example.john.gamenews.Object.Players;
 import com.example.john.gamenews.R;
 
 import java.util.ArrayList;

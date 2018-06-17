@@ -14,7 +14,6 @@ import android.view.MenuItem;
 
 import com.example.john.gamenews.Clases.Utilidades_Tab;
 import com.example.john.gamenews.Fragmentos.Fragment_Favoritos;
-import com.example.john.gamenews.Fragmentos.Fragment_LogOut;
 import com.example.john.gamenews.Fragmentos.Fragment_Tab_css;
 import com.example.john.gamenews.Fragmentos.Fragment_Tab_dota;
 import com.example.john.gamenews.Fragmentos.Fragment_Tab_lol;
@@ -31,7 +30,6 @@ public class NavDraw extends AppCompatActivity implements NavigationView.OnNavig
         Fragment_Tab_General.OnFragmentInteractionListener,
         Fragment_Tab_Image.OnFragmentInteractionListener,
         Fragment_Tab_Top_Players.OnFragmentInteractionListener,
-        Fragment_LogOut.OnFragmentInteractionListener,
         Fragment_Favoritos.OnFragmentInteractionListener {
 
     android.support.v4.app.Fragment miFragment;
@@ -68,6 +66,7 @@ public class NavDraw extends AppCompatActivity implements NavigationView.OnNavig
     @Override
     public void onBackPressed() {
         drawerLayout = findViewById(R.id.nav_drawer);
+        finish();
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
@@ -104,8 +103,6 @@ public class NavDraw extends AppCompatActivity implements NavigationView.OnNavig
             miFragment = new Fragment_Tab_css().newInstance("csgo");
             fragmentseleccionado = true;
         } else if (id == R.id.nav_logout) {
-            miFragment = new Fragment_LogOut();
-            fragmentseleccionado = true;
             Intent intent = new Intent(NavDraw.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -123,7 +120,6 @@ public class NavDraw extends AppCompatActivity implements NavigationView.OnNavig
 
         return true;
     }
-
 
     @Override
     public void onFragmentInteraction(Uri uri) {

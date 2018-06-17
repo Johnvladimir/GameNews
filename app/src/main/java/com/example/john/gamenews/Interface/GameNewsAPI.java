@@ -26,6 +26,7 @@ public interface GameNewsAPI {
     @GET("players")
     Call<List<Players>> signPlayers(@Header("Authorization") String token);
 
-    @POST("user/fav/{idNews}")
+    @POST("user/{id}/fav")
+    @FormUrlEncoded
     Call<String> addFav(@Header("Authorization") String token, @Path("idNew") String idNew);
 }

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
-import com.example.john.gamenews.Fragmentos.Fragment_noticias;
 import com.example.john.gamenews.Adapters.AdapterRecycler;
 import com.example.john.gamenews.Interface.GameNewsAPI;
 import com.example.john.gamenews.MainActivity;
